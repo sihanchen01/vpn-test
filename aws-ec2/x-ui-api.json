@@ -1,0 +1,115 @@
+{
+  "enable": true,
+  "remark": "VLESS-443",
+  "listen": "",
+  "port": 443,
+  "protocol": "vless",
+  "expiryTime": 0,
+  "total": 0,
+  "settings": {
+    "clients": [],
+    "decryption": "none",
+    "fallbacks": []
+  },
+  "streamSettings": {
+    "network": "tcp",
+    "security": "reality",
+    "realitySettings": {
+      "show": false,
+      "target": "https://www.oracle.com:443",
+      "serverNames": [ 
+        "www.oracle.com" 
+      ],
+    }
+  },
+  "sniffing": {
+    "enabled": true,
+    "destOverride": [
+      "http",
+      "tls"
+    ]
+  }
+}
+ 
+---
+
+{
+  "success": true,
+  "msg": "",
+  "obj": [
+    {
+      "id": 1,
+      "up": 0,
+      "down": 0,
+      "total": 0,
+      "remark": "",
+      "subSortIndex": 1,
+      "enable": true,
+      "expiryTime": 0,
+      "trafficReset": "never",
+      "lastTrafficResetTime": 0,
+      "clientStats": [],
+      "listen": "",
+      "port": 47729,
+      "protocol": "vless",
+      "tag": "in-47729-tcp",
+      "shareAddrStrategy": "listen",
+      "shareAddr": "",
+      "originNodeGuid": "7d35318f-8b22-469c-98ef-81f2572331f1",
+      "settings": {
+        "clients": [],
+        "decryption": "none",
+        "encryption": "none",
+        "testseed": [
+          900,
+          500,
+          900,
+          256
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "tcpSettings": {
+          "acceptProxyProtocol": false,
+          "header": {
+            "type": "none"
+          }
+        },
+        "security": "reality",
+        "realitySettings": {
+          "show": false,
+          "xver": 0,
+          "target": "[www.amazon.com:443](https://www.amazon.com:443)",
+          "serverNames": [
+            "[www.amazon.com](https://www.amazon.com)"
+          ],
+          "privateKey": "KE5G0pv7BCZqq5VGHvksFRO4UMiYBzXtcJdzBU_1CFY",
+          "minClientVer": "",
+          "maxClientVer": "",
+          "maxTimediff": 0,
+          "shortIds": [
+            "f9da29",
+            "db",
+            "ffe37303",
+            "0272",
+            "adebfdf8c5b5",
+            "d3415f6fc6",
+            "2310b19027810d",
+            "8e94743ed798f396"
+          ],
+          "mldsa65Seed": "",
+          "settings": {
+            "publicKey": "jDI8zHzUzMe6iReTVqACQlW5imu3KtJSwHToTjm8mhA",
+            "fingerprint": "chrome",
+            "serverName": "",
+            "spiderX": "/",
+            "mldsa65Verify": ""
+          }
+        }
+      },
+      "sniffing": {
+        "enabled": false
+      }
+    }
+  ]
+}
