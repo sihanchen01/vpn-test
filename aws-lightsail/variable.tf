@@ -15,8 +15,8 @@ variable "blueprint_id" {
 }
 
 variable "bundle_id" {
-  description = "Lightsail plan id. small_3_0 = 2GB RAM / ~3TB transfer (~$12/mo, recommended). micro_3_0 = 1GB / 2TB (~$5/mo)"
-  default     = "small_3_0"
+  description = "Lightsail plan id. small_3_0 = 2GB RAM / ~3TB transfer (~$12/mo, recommended). micro_3_0 = 1GB RAM / 2 vCPU / 2TB (~$7/mo)"
+  default     = "micro_3_0"
 }
 
 variable "panel_port" {
