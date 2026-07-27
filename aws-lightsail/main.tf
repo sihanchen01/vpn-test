@@ -5,6 +5,8 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+  required_version = ">= 1.5.0"
 }
 
 provider "aws" {
@@ -47,35 +49,24 @@ resource "aws_lightsail_static_ip_attachment" "vpn_ip_attach" {
 resource "aws_lightsail_instance_public_ports" "vpn_ports" {
   instance_name = aws_lightsail_instance.vpn.name
 
-  port_info {
-    protocol   = "tcp"
-    from_port  = var.panel_port
-    to_port    = var.panel_port
-    cidrs      = ["0.0.0.0/0"]
-    ipv6_cidrs = ["::/0"]
-  }
-
-  port_info {
-    protocol   = "tcp"
-    from_port  = 22
-    to_port    = 22
-    cidrs      = ["0.0.0.0/0"]
-    ipv6_cidrs = ["::/0"]
-  }
-
-  port_info {
-    protocol   = "tcp"
-    from_port  = 443
-    to_port    = 443
-    cidrs      = ["0.0.0.0/0"]
-    ipv6_cidrs = ["::/0"]
-  }
-
-  port_info {
-    protocol   = "tcp"
-    from_port  = 80
-    to_port    = 80
-    cidrs      = ["0.0.0.0/0"]
-    ipv6_cidrs = ["::/0"]
+  dynamic "port_info" {
+    for_each = flatten([
+      for item in var.allowed_ports : [
+        {
+          protocol   = item.protocol
+          from_port  = item.from_port
+          to_port    = item.to_port
+          cidrs      = item.cidrs
+          ipv6_cidrs = item.ipv6_cidrs
+        }
+      ]
+    ])
+    content {
+      protocol   = port_info.value.protocol
+      from_port  = port_info.value.from_port
+      to_port    = port_info.value.to_port
+      cidrs      = port_info.value.cidrs
+      ipv6_cidrs = port_info.value.ipv6_cidrs
+    }
   }
 }
