@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 6.8"
     }
   }
 
@@ -29,6 +29,10 @@ resource "aws_lightsail_instance" "vpn" {
   blueprint_id      = var.blueprint_id
   bundle_id         = var.bundle_id
   user_data         = file("${path.module}/cloud-init.yaml")
+
+  lifecycle {
+    ignore_changes = [user_data]
+  }
 
   tags = {
     Name = "vpn-server"

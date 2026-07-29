@@ -1,4 +1,4 @@
-region    = "ap-northeast-1"
+region    = "ap-southeast-1"
 bundle_id = "nano_3_0"
 
 allowed_ports = [

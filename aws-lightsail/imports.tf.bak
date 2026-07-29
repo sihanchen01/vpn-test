@@ -1,0 +1,21 @@
+# Import existing tokyo Lightsail resources into state (terraform >= 1.5 import blocks).
+# aws_lightsail_instance_public_ports has no import support upstream, so it isn't
+# listed here — it will simply be created/overwritten on the next apply, which is
+# safe since it declaratively re-applies the same firewall rules already in effect.
+
+import {
+  to = aws_lightsail_instance.vpn
+  id = "vpn-server"
+}
+
+
+import {
+  to = aws_lightsail_static_ip.vpn_ip
+  id = "vpn-static-ip"
+}
+
+
+import {
+  to = aws_lightsail_static_ip_attachment.vpn_ip_attach
+  id = "vpn-static-ip"
+}
